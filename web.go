@@ -16,5 +16,5 @@ func main() {
 }
 
 func handler(res http.ResponseWriter, req *http.Request) {
-  fmt.Fprintln(res, "screen capture service!!")
+  fmt.Fprintln(res, "Screen Capture Service!!")
 }
