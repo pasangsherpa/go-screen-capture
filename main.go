@@ -13,6 +13,5 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Inside handler")
-	fmt.Fprintf(w, "Hello World!!")
+	fmt.Fprintf(w, "Screen Capture Service")
 }
