@@ -1,17 +1,19 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+  "fmt"
+  "net/http"
+  "os"
 )
 
 func main() {
-	// redirect all request to handler function
-	http.HandleFunc("/", handler)
-	// listen for connection at port 9000
-	http.ListenAndServe(":9000", nil)
+  http.HandleFunc("/", handler)
+  err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
+  if err != nil {
+    panic(err)
+  }
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Screen Capture Service")
+func handler(res http.ResponseWriter, req *http.Request) {
+  fmt.Fprintln(res, "screen capture service!!")
 }
