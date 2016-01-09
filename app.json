@@ -1,0 +1,14 @@
+{
+  "name": "go-screen-capture",
+  "description": "Go microservice to capture a web page as a screenshot",
+  "keywords": [
+    "go",
+    "screen",
+    "capture",
+    "screenshot"
+  ],
+  "image": "heroku/go:1.5",
+  "mount_dir": "src/github.com/pasangsherpa/go-screen-capture",
+  "website": "http://github.com/pasangsherpa/go-screen-capture",
+  "repository": "http://github.com/pasangsherpa/go-screen-capture"
+}
