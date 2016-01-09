@@ -1,1 +1,1 @@
-web: go-screen-capture
+web: PORT=8080 go-screen-capture
