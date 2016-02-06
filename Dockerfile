@@ -1,1 +1,1 @@
-FROM pasangsherpa/go-webloop:heroku
+FROM heroku/go:1.5.1
