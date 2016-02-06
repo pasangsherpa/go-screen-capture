@@ -7,7 +7,7 @@
     "capture",
     "screenshot"
   ],
-  "image": "pasangsherpa/go-webloop",
+  "image": "pasangsherpa/go-webloop:heroku",
   "mount_dir": "src/github.com/pasangsherpa/go-screen-capture",
   "website": "http://github.com/pasangsherpa/go-screen-capture",
   "repository": "http://github.com/pasangsherpa/go-screen-capture"
