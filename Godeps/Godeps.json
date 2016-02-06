@@ -1,6 +1,6 @@
 {
 	"ImportPath": "github.com/pasangsherpa/go-screen-capture",
-	"GoVersion": "go1.5",
+	"GoVersion": "go1.5.3",
 	"Packages": [
 		"./..."
 	],
