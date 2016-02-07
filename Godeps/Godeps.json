@@ -4,5 +4,11 @@
 	"Packages": [
 		"./..."
 	],
-	"Deps": []
+	"Deps": [
+		{
+			"ImportPath": "github.com/julienschmidt/httprouter",
+			"Comment": "v1.1-24-g6e0ff13",
+			"Rev": "6e0ff1339a6bc1e6ea66670cb4f6496d3dbb85b6"
+		}
+	]
 }

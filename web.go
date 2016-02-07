@@ -3,14 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/julienschmidt/httprouter"
+	"github.com/pasangsherpa/go-screen-capture/Godeps/_workspace/src/github.com/julienschmidt/httprouter"
 	"log"
 	"net/http"
 	"os"
 )
 
 func Index(res http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-
+	fmt.Fprintf(res, "welcome to screen capture service")
 }
 
 func Pong(res http.ResponseWriter, r *http.Request, ps httprouter.Params) {
