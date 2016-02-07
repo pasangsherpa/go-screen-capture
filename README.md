@@ -1,6 +1,28 @@
 # go-screen-capture
 > Go microservice to capture a web page as a screenshot
 
+## Using Godep
+Install/update godep:
+
+```bash
+$  go get -u github.com/tools/godep
+```
+
+To have godep determine, save and rewrite your application’s dependencies, navigate to your application’s directory within $GOPATH and run the following command:
+
+```bash
+$  godep save -r ./...
+```
+
+This will have the following effects:
+
+1. A Godeps/Godeps.json file will be created that contains the JSON representation of the application’s dependencies, the packages that we’re working on (the package spec) and the version of Go you are using locally.
+
+2. Each dependency will be copied into a subdirectory of Godeps/_workspace, mirroring the structure of a $GOPATH.
+
+3. Each application file containing a non local or non std lib import (those that reference packages outside of your application) will be rewritten so that go will import and use the version contained in Godeps/_workspace.
+
+
 ## REST API
 
 REST API is available on "/" using:
