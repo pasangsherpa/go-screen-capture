@@ -11,7 +11,7 @@ import (
  * Handler to handle request to index route
  */
 func index(c *gin.Context) {
-	url := c.Request.URL.Query().Get("url")
+	url := c.DefaultQuery("url", "https://go-screen-capture.herokuapp.com/")
 	c.String(http.StatusOK, "URL: %s", url)
 }
 
