@@ -1,32 +1,44 @@
 package main
 
 import (
-  "encoding/json"
-  "fmt"
-  "github.com/pasangsherpa/go-screen-capture/Godeps/_workspace/src/github.com/julienschmidt/httprouter"
-  "log"
-  "net/http"
-  "os"
+	"net/http"
+	"os"
+
+	"github.com/pasangsherpa/go-screen-capture/Godeps/_workspace/src/github.com/gin-gonic/gin"
 )
 
-func Index(res http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-  fmt.Fprintf(res, "welcome to screen capture service")
+/**
+ * Handler to handle request to index route
+ */
+func index(c *gin.Context) {
+	url := c.Request.URL.Query().Get("url")
+	c.String(http.StatusOK, "URL: %s", url)
 }
 
-func Pong(res http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-  data := map[string]interface{}{
-    "response": "pong",
-  }
-  js, _ := json.Marshal(data)
-  res.Header().Set("Content-Type", "application/json")
-  res.Write(js)
+/**
+ * Handler to handle service healthcheck
+ */
+func pong(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"message": "pong",
+	})
 }
 
+/**
+ * Main function
+ */
 func main() {
-  router := httprouter.New()
-  router.GET("/", Index)
-  router.GET("/ping", Pong)
 
-  fmt.Println("listening @port:" + os.Getenv("PORT"))
-  log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
+	app := gin.Default()
+
+	/**
+	 * Setup routes
+	 */
+	app.GET("/", index)
+	app.GET("/ping", pong)
+
+	/**
+	 * Start application
+	 */
+	app.Run(":" + os.Getenv("PORT"))
 }
