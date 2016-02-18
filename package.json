@@ -1,0 +1,20 @@
+{
+  "name": "go-screen-capture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pasangsherpa@github.com/pasangsherpa/screen-capture.git"
+  },
+  "keywords": [],
+  "author": "Pasang Sherpa <pgyalzen@gmail.com> (https://github.com/pasangsherpa)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pasangsherpa/screen-capture/issues"
+  },
+  "homepage": "https://github.com/pasangsherpa/screen-capture#readme"
+}
