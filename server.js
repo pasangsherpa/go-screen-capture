@@ -36,18 +36,7 @@ function setupMiddlewares() {
   app.use(convert(error()));
 
   // routing
-  let router = new Router();
-
-  /**
-   * Index page
-   */
-
-  router.get('/', co.wrap(function* (ctx, next) {
-    ctx.body = {
-      message: 'pong'
-    }
-  }));
-
+  let router = require('./src/routes/');
   app.use(router.routes());
 
 }
