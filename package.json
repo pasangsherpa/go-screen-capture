@@ -8,7 +8,9 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "prestart": "npm install",
+    "start": "node server",
+    "postinstall": "node -e \"var s='../src',d='node_modules/src',fs=require('fs');fs.exists(d,function(obj){obj||fs.symlinkSync(s,d,'dir')});\""
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,6 @@
   },
   "homepage": "https://github.com/pasangsherpa/screen-capture#readme",
   "dependencies": {
-    "app-module-path": "^1.0.5",
     "co": "^4.6.0",
     "co-views": "^2.1.0",
     "config": "^1.17.1",
@@ -33,10 +34,8 @@
     "koa-convert": "^1.2.0",
     "koa-error": "pasangsherpa/error",
     "koa-router": "^7.0.0",
-    "mongoose": "^4.3.4",
     "ramda": "^0.19.0",
     "ramda-fantasy": "^0.4.1",
-    "require-directory": "^2.1.1",
     "thunkify": "^2.1.2"
   }
 }

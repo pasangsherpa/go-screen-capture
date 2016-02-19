@@ -3,12 +3,12 @@
 /**
  * Module dependencies.
  */
+
 const config = require('config');
 const convert = require('koa-convert');
 const bodyParser = require('koa-body');
 const compress = require('koa-compress');
 const error = require('koa-error');
-const Router = require('koa-router');
 const co = require('co');
 const Koa = require('koa');
 const app = new Koa();
@@ -36,7 +36,7 @@ function setupMiddlewares() {
   app.use(convert(error()));
 
   // routing
-  let router = require('./src/routes/');
+  let router = require('src/routes/');
   app.use(router.routes());
 
 }
