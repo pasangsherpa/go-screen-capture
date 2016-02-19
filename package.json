@@ -8,7 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "prestart": "npm install",
+    "prestart": "npm install --unsafe-perm",
     "start": "node server",
     "postinstall": "node -e \"var s='../src',d='node_modules/src',fs=require('fs');fs.exists(d,function(obj){obj||fs.symlinkSync(s,d,'dir')});\""
   },
@@ -37,5 +37,8 @@
     "ramda": "^0.19.0",
     "ramda-fantasy": "^0.4.1",
     "thunkify": "^2.1.2"
+  },
+  "config": {
+    "unsafe-perm": true
   }
 }
