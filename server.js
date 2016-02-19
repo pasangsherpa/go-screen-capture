@@ -39,6 +39,8 @@ function setupMiddlewares() {
   let router = require('src/routes/');
   app.use(router.routes());
 
+  // respond to OPTIONS requests
+  app.use(router.allowedMethods());
 }
 
 /**

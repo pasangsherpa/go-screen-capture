@@ -24,18 +24,6 @@ router.get('/', co.wrap(function* (ctx, next) {
 }));
 
 /**
- * Register memes routes
- */
-
-router.use(router.routes());
-
-/**
- * Respond to OPTIONS requests
- */
-
-router.use(router.allowedMethods());
-
-/**
  * Expose `router`
  */
 
