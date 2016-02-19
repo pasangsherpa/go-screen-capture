@@ -17,8 +17,8 @@ const app = new Koa();
  * Environment variables
  */
 
-let env = config.util.getEnv('NODE_ENV');
-let port = config.get('API.port');
+const NODE_ENV = config.util.getEnv('NODE_ENV');
+const API_PORT = config.get('API.port');
 
 /**
  * Setup middlewares
@@ -36,7 +36,7 @@ function setupMiddlewares() {
   app.use(convert(error()));
 
   // routing
-  let router = require('src/routes/');
+  const router = require('src/routes/');
   app.use(router.routes());
 
   // respond to OPTIONS requests
@@ -54,7 +54,7 @@ co(function* init() {
 }).then(() => {
   // error handler
   app.on('error', (err) => {
-    if (env === 'production') {
+    if (NODE_ENV === 'production') {
       // TODO: report err to cloud (ELK)
     } else {
       console.log(err.stack);
@@ -62,7 +62,7 @@ co(function* init() {
   });
 
   // start server
-  app.listen(port);
+  app.listen(API_PORT);
 }, err => {
   console.log(err.stack)
 });

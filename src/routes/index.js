@@ -11,7 +11,7 @@ const Router = require('koa-router');
  * Create router
  */
 
-let router = new Router();
+const router = new Router();
 
 /**
  * Index page
