@@ -1,27 +1,27 @@
 'use strict';
 
 /**
- * Module dependencies.
+ * Module dependencies
  */
 
-const config = require('config');
-const convert = require('koa-convert');
 const bodyParser = require('koa-body');
 const compress = require('koa-compress');
+const convert = require('koa-convert');
+const config = require('config');
 const error = require('koa-error');
-const co = require('co');
 const Koa = require('koa');
+const co = require('co');
 const app = new Koa();
 
 /**
- * Environment variables.
+ * Environment variables
  */
 
 let env = config.util.getEnv('NODE_ENV');
 let port = config.get('API.port');
 
 /**
- * Setup middlewares.
+ * Setup middlewares
  */
 
 function setupMiddlewares() {
@@ -42,7 +42,7 @@ function setupMiddlewares() {
 }
 
 /**
- * Init.
+ * Init
  */
 
 co(function* init() {
