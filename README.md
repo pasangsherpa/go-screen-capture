@@ -42,7 +42,7 @@ Few rules:
 For a quick test with the command line (using `curl`), type:
 
 ```bash
-curl http://localhost:8080/?url=github.com > github.png
-curl -H "Content-Type: application/json" -d '{"url":"github.com"}' http://localhost:8080/ > github.png
-curl -H "Content-Type: application/x-www-form-urlencoded" -d 'url=github.com' http://localhost:8080/ > github.png
+curl https://go-screen-capture.herokuapp.com/?url=http://github.com > github.png
+curl -H "Content-Type: application/json" -d '{"url":"http://github.com"}' https://go-screen-capture.herokuapp.com/ > github.png
+curl -H "Content-Type: application/x-www-form-urlencoded" -d 'url=http://github.com' https://go-screen-capture.herokuapp.com/ > github.png
 ```
