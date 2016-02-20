@@ -4,7 +4,6 @@
  * Module dependencies
  */
 
-const bodyParser = require('koa-body');
 const compress = require('koa-compress');
 const convert = require('koa-convert');
 const config = require('config');
@@ -25,9 +24,6 @@ const API_PORT = config.get('API.port');
  */
 
 function setupMiddlewares() {
-
-  // parse body
-  app.use(convert(bodyParser()));
 
   // compression
   app.use(convert(compress()));
@@ -53,7 +49,7 @@ co(function* init() {
 
 }).then(() => {
   // error handler
-  app.on('error', (err) => {
+  app.on('error', err => {
     if (NODE_ENV === 'production') {
       // TODO: report err to cloud (ELK)
     } else {

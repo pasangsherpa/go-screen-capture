@@ -29,7 +29,6 @@
     "config": "^1.17.1",
     "kerberos": "0.0.18",
     "koa": "^2.0.0-alpha.3",
-    "koa-body": "^1.4.0",
     "koa-compress": "^1.0.8",
     "koa-convert": "^1.2.0",
     "koa-error": "pasangsherpa/error",

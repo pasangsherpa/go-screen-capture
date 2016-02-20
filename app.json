@@ -1,0 +1,13 @@
+{
+  "name": "screen-capture",
+  "description": "Node microservice to capture a web page as a screenshot",
+  "keywords": [
+    "nodejs",
+    "screen",
+    "capture",
+    "screenshot"
+  ],
+  "image": "pasangsherpa/heroku-phantomjs",
+  "website": "http://github.com/pasangsherpa/screen-capture",
+  "repository": "http://github.com/pasangsherpa/screen-capture"
+}
