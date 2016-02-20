@@ -20,7 +20,7 @@ const router = new Router();
 
 router.get('/', co.wrap(function* (ctx, next) {
   let ph, page, url = ctx.query.url;
-  if (!url){
+  if (!url) {
     return ctx.body = {
       error: {
         message: 'url query param is required'
@@ -38,17 +38,15 @@ router.get('/', co.wrap(function* (ctx, next) {
     })
     .then(status => {
       if (status === 'success') {
-        return page.property('content');
+        return page.renderBase64('PNG');
       }
       return null;
     })
-    .then(content => {
-      let message = content ? content : 'Failed';
+    .then(base64 => {
+      ctx.type = 'html';
+      ctx.body = `<img src="data:image/gif;base64,${base64}">`
       page.close();
       ph.exit();
-      ctx.body = {
-        message: message
-      }
     });
 }));
 
