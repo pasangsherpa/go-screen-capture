@@ -1,6 +1,12 @@
 # screen-capture
 > Node microservice to capture a web page as a screenshot
 
+## Pushing app to heroku
+
+```bash
+heroku docker:release --app go-screen-capture
+```
+
 ## REST API
 
 REST API is available on "/" using:
