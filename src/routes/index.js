@@ -21,6 +21,8 @@ const router = new Router();
 
 router.get('/', co.wrap(function* (ctx, next) {
   const url = ctx.query.url ? utils.url(ctx.query.url) : null;
+  const format = ctx.query.format || 'png';
+
   if (!url) {
     return ctx.body = {
       error: {
@@ -35,7 +37,7 @@ router.get('/', co.wrap(function* (ctx, next) {
 
   let result = null;
   if (status === 'success') {
-    result = yield page.renderBase64('JPG');
+    result = yield page.renderBase64(format);
   }
 
   ctx.type = 'html';
