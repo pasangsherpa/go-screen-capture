@@ -6,6 +6,7 @@
 
 const co = require('co');
 const phantom = require('phantom');
+const utils = require('src/lib/utils');
 const Router = require('koa-router');
 
 /**
@@ -19,7 +20,7 @@ const router = new Router();
  */
 
 router.get('/', co.wrap(function* (ctx, next) {
-  const url = ctx.query.url;
+  const url = ctx.query.url ? utils.url(ctx.query.url) : null;
   if (!url) {
     return ctx.body = {
       error: {
@@ -38,7 +39,7 @@ router.get('/', co.wrap(function* (ctx, next) {
   }
 
   ctx.type = 'html';
-  ctx.body = `<img src="data:image/gif;base64,${result}">`
+  ctx.body = `<img src="data:image/gif;base64,${result}">`;
   page.close();
   ph.exit();
 }));
