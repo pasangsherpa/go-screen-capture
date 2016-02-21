@@ -19,7 +19,7 @@ const router = new Router();
  */
 
 router.get('/', co.wrap(function* (ctx, next) {
-  let ph, page, url = ctx.query.url;
+  const url = ctx.query.url;
   if (!url) {
     return ctx.body = {
       error: {
@@ -27,27 +27,20 @@ router.get('/', co.wrap(function* (ctx, next) {
       }
     }
   }
-  return phantom.create()
-    .then(p => {
-      ph = p;
-      return ph.createPage();
-    })
-    .then(p => {
-      page = p;
-      return page.open(url);
-    })
-    .then(status => {
-      if (status === 'success') {
-        return page.renderBase64('PNG');
-      }
-      return null;
-    })
-    .then(base64 => {
-      ctx.type = 'html';
-      ctx.body = `<img src="data:image/gif;base64,${base64}">`
-      page.close();
-      ph.exit();
-    });
+
+  const ph = yield phantom.create();
+  const page = yield ph.createPage();
+  const status = yield page.open(url);
+
+  let result = null;
+  if (status === 'success') {
+    result = yield page.renderBase64('JPG');
+  }
+
+  ctx.type = 'html';
+  ctx.body = `<img src="data:image/gif;base64,${result}">`
+  page.close();
+  ph.exit();
 }));
 
 /**
