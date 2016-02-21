@@ -22,6 +22,7 @@ const router = new Router();
 router.get('/', co.wrap(function* (ctx, next) {
   const url = ctx.query.url ? utils.url(ctx.query.url) : null;
   const format = ctx.query.format || 'png';
+  const acccepts = ctx.accepts('html', 'json');
 
   if (!url) {
     return ctx.body = {
@@ -40,8 +41,19 @@ router.get('/', co.wrap(function* (ctx, next) {
     result = yield page.renderBase64(format);
   }
 
-  ctx.type = 'html';
-  ctx.body = `<img src="data:image/gif;base64,${result}">`;
+  switch (acccepts) {
+    case 'json':
+      ctx.type = 'json';
+      ctx.body = {
+        base64: `data:image/gif;base64,${result}`
+      }
+      break;
+    default:
+      ctx.type = 'html';
+      ctx.body = `<img src="data:image/gif;base64,${result}">`;
+      break;
+  }
+
   page.close();
   ph.exit();
 }));
