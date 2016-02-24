@@ -10,4 +10,11 @@ describe('utils', () => {
     assert.equal(utils.md5('foo'), foo_md5ed);
     assert.equal(utils.md5('github'), github_md5ed);
   });
+
+  it('should append http to a schemeless url', () => {
+    const github = 'github.com';
+    const url = 'http://github.com';
+    assert.equal(utils.url(github), url);
+    assert.equal(utils.url(url), url);
+  });
 });
