@@ -42,5 +42,8 @@
   },
   "config": {
     "unsafe-perm": true
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5"
   }
 }
