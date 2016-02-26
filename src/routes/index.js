@@ -19,8 +19,10 @@ const router = new Router();
  * Index page
  */
 
-router.get('/', co.wrap(function* (ctx, next) {
+router.get('/', co.wrap(function*(ctx, next) {
   const url = ctx.query.url ? utils.url(ctx.query.url) : null;
+  const height = ctx.query.h || 1024;
+  const width = ctx.query.w || 600;
   const format = ctx.query.format || 'png';
   const acccepts = ctx.accepts('html', 'json');
 
@@ -38,6 +40,8 @@ router.get('/', co.wrap(function* (ctx, next) {
 
   let result = null;
   if (status === 'success') {
+    yield page.property('viewportSize', { width: width, height: height });
+    let value = yield page.property('viewportSize');
     result = yield page.renderBase64(format);
   }
 
@@ -62,7 +66,7 @@ router.get('/', co.wrap(function* (ctx, next) {
  * Healthcheck
  */
 
-router.get('/ping', co.wrap(function* (ctx, next) {
+router.get('/ping', co.wrap(function*(ctx, next) {
   ctx.body = {
     message: 'pong'
   };
