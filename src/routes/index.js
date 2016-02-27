@@ -38,23 +38,22 @@ router.get('/', co.wrap(function*(ctx, next) {
   const page = yield ph.createPage();
   const status = yield page.open(url);
 
-  let result = null;
+  let img = null;
   if (status === 'success') {
     yield page.property('viewportSize', { width: width, height: height });
-    let value = yield page.property('viewportSize');
-    result = yield page.renderBase64(format);
+    img = yield page.renderBase64(format);
   }
 
   switch (acccepts) {
     case 'json':
       ctx.type = 'json';
       ctx.body = {
-        base64: `data:image/gif;base64,${result}`
+        base64: `data:image/gif;base64,${img}`
       }
       break;
     default:
       ctx.type = 'html';
-      ctx.body = `<img src="data:image/gif;base64,${result}">`;
+      ctx.body = `<img src="data:image/gif;base64,${img}">`;
       break;
   }
 
